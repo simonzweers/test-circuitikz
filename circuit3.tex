@@ -1,0 +1,16 @@
+\section{Op-amp: inverting amplifier}
+
+\begin{center}
+	\begin{circuitikz}
+		% Draw op-amp
+		\node[op amp] (opamp) at (0,0) {};
+
+		% Connections
+		\draw (opamp.-) to[short, *-] ++(0,2) to[R, l_=$R_f$] ++(2,0) -| (opamp.out);
+		\draw (opamp.-) to[R, l_=$R_i$, -o] ++(-2,0) to[short] ++(-0.5,0) node[left] {$V_{in}$};
+		\draw (opamp.+) to[short] ++(0,-0.5) node[ground] {};
+		\draw (opamp.out) to[short, -o] ++(1,0) node[right] {$V_{out}$};
+
+	\end{circuitikz}
+\end{center}
+

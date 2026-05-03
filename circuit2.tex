@@ -1,0 +1,43 @@
+\section{KCL circuit}
+
+\begin{center}
+	\begin{circuitikz}[american, scale=1]
+		\draw
+		(0,8) to [R, l=$3k\Omega$] (4,8)
+		to [R, l=$4k\Omega$] (8,8)
+		to [V, l=$12V$, invert] (8,4)
+		to [R, l_=$6k\Omega$] (8,0)
+		to [short] (0,0)
+		to [V, l=$10V$, invert] (0,4)
+		to [R, l=$2k\Omega$] (0, 8)
+		(4,8) to [I, l=2mA, *-*, invert] (4,4)
+		to [R, l=$6k\Omega$, *-*] (8,4)
+		(4,4) to [R, l=$3k\Omega$] (4, 2) to [V, l=$8V$, -*] (4,0)
+		(9, 4) to [open, v^>=$V_o$] (9, 0)
+		;
+	\end{circuitikz}
+\end{center}
+
+
+\begin{center}
+	\begin{circuitikz}[american, scale=1]
+		
+		\draw
+		(0,8) to [R, l=$5k\Omega$] (4,8) node[above] {$v_2$}
+		to [R, l=$4k\Omega$] (8,8)
+		to [V, l=$12V$, invert] (8,4)
+		to [R, l_=$6k\Omega$] (8,0)
+		to [short] (0,0)
+		to [V, l=$10V$, invert] (0,4)
+		to [short] (0, 8)
+		(4,8) to [I, l=2mA, *-*, invert] (4,4) node[left] {$v_1$}
+		to [R, l=$6k\Omega$, *-*] (8,4)
+		(4,4) to [R, l=$3k\Omega$] (4, 2) to [V, l=$8V$, -*] (4,0) node[ground] {}
+		;
+		\draw(9, 4) to [open, v^>=$V_o$] (9, 0)
+		;
+	\end{circuitikz}
+\end{center}
+
+\clearpage
+
