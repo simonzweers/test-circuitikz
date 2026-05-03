@@ -1,0 +1,44 @@
+\begin{center}
+
+	\begin{circuitikz}[american] \draw
+		(0,0) to [V] (0,4)
+		to[I] (4,4) -- (4,0)
+		to[lamp] (0,0)
+		;
+	\end{circuitikz}
+	
+\end{center}
+
+\begin{center}
+	\begin{circuitikz}[american, scale=1]
+		\draw
+		(0,8) to [R, l=$3k\Omega$] (4,8)
+		to [R, l=$4k\Omega$] (8,8)
+		to [V, l=$12V$, invert] (8,4)
+		to [R, l_=$6k\Omega$] (8,0)
+		to [short] (0,0)
+		to [V, l=$10V$, invert] (0,4)
+		to [R, l=$2k\Omega$] (0, 8)
+		(4,8) to [I, l=2mA, *-*, invert] (4,4)
+		to [R, l=$6k\Omega$, *-*] (8,4)
+		(4,4) to [R, l=$3k\Omega$] (4, 2) to [V, l=$8V$, -*] (4,0)
+		(9, 4) to [open, v^>=$V_o$] (9, 0)
+		;
+	\end{circuitikz}
+\end{center}
+
+
+\begin{center}
+	\begin{circuitikz}
+		% Draw op-amp
+		\node[op amp] (opamp) at (0,0) {};
+
+		% Connections
+		\draw (opamp.-) to[R, l_=$R_f$, *-] ++(0,2) to[short] ++(2,0) -| (opamp.out);
+		\draw (opamp.-) to[R, l_=$R_i$, -o] ++(-2,0) to[short] ++(-0.5,0) node[left] {$V_{in}$};
+		\draw (opamp.+) to[short] ++(0,-0.5) node[ground] {};
+		\draw (opamp.out) to[short, -o] ++(1,0) node[right] {$V_{out}$};
+
+	\end{circuitikz}
+\end{center}
+

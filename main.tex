@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+
+% ---------- PACKAGES ----------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{tcolorbox}   % For boxes
+\usepackage{amsmath, amssymb}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{graphicx}
+% \usepackage{mdframed}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{svg}
+\usepackage{etoolbox} % For unnumbered TOC
+\usepackage[siunitx]{circuitikz}
+
+\newcommand{\thecourse}{Lineare circuits}
+% ---------- HEADER & FOOTER ----------
+\pagestyle{fancy}
+\fancyhf{}
+% \lhead{\textit{\thecourse}}
+\cfoot{\thepage}
+
+% ---------- CUSTOM COMMANDS ----------
+% Question command
+\newcommand{\question}[1]{%
+  \vspace{1em}%
+  \noindent\textbf{#1.}%
+}
+
+% Answer environment
+\newenvironment{answer}{
+  \begin{tcolorbox}[colback=gray!5,colframe=black!60,title=Answer]
+}{
+  \end{tcolorbox}
+}
+
+% ---------- SECTION FORMATTING ----------
+\titleformat{\section}
+  {\large\bfseries}
+  {\thesection.}{0.5em}{}
+
+% ---------- CIRCUITIKZ SETTINGS -----------
+% \tikzset{
+%     /tikz/circuitikz/bipoles/resistor/stroke = red,
+%     /tikz/circuitikz/bipoles/capacitor/color = blue,
+%     /tikz/circuitikz/bipoles/battery1/color = green,
+% }
+% ---------- DOCUMENT ----------
+\begin{document}
+
+\title{
+    \includesvg[width=0.75\linewidth]{TU_Delft_Logo} \\[2em]
+    \thecourse: Sample circuits
+}
+\author{Simon Zweers}
+\date{\today}
+\maketitle
+\thispagestyle{fancy}
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\newpage
+
+% TOC bs
+\setcounter{secnumdepth}{0}
+\tableofcontents
+\newpage
+
+% Main Text
+
+\include{circuit1.tex}
+
+
+\end{document}
+
