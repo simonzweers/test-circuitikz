@@ -24,11 +24,11 @@
 		
 		\draw
 		(0,8) to [R, l=$5k\Omega$] (4,8) node[above] {$v_2$}
-		to [R, l=$4k\Omega$] (8,8)
+		to [R, l=$4k\Omega$] (8,8) node[above] {$v_3$}
 		to [V, l=$12V$, invert] (8,4)
 		to [R, l_=$6k\Omega$] (8,0)
 		to [short] (0,0)
-		to [V, l=$10V$, invert] (0,4)
+		to [V, l=$10V$, invert] (0,8)
 		to [short] (0, 8)
 		(4,8) to [I, l=2mA, *-*, invert] (4,4) node[left] {$v_1$}
 		to [R, l=$6k\Omega$, *-*] (8,4)
@@ -39,5 +39,52 @@
 	\end{circuitikz}
 \end{center}
 
+KVL at $v_1$
+\begin{gather*}
+	\frac{v_1 - 8}{3k} + \frac{v_1-V_o}{6k} + 2mA = 0 \\ 
+	2v_1-16 + v_1-V_o = -12 \\ 
+	3v_1 + -V_o = 4
+\end{gather*}
+
+KVL at $v_2$
+\begin{gather*}
+	\frac{v_2-10}{5k} - 2m + \frac{v_2 - v_3}{4k} = 0 \\ 
+	4v_2 - 40 - 40 + 5v_2 - 5v_3 = 0 \\
+	9v_2 - 5v_3 = 80
+\end{gather*}
+
+Constrain equation supernode
+\[
+	V_o - 12 = v_3 \leftrightarrow - v_3 + V_o= 12
+\]
+
+KVL at supernode
+\begin{gather*}
+	\frac{v_3 - v_2}{4k} + \frac{V_o - v_1}{6k} + \frac{V_o}{6k} \\ 
+	3v_3 - 3v_2 + 2V_o - 2v_1 + 2V_o = 0 \\
+	-2v_1 - 3v_2 + 3v_3 + 4V_o = 0
+\end{gather*}
+
+Solving the matrix:
+\begin{gather*}
+	\begin{bmatrix}
+		3 & 0 & 0 & -1 \\
+		0 & 9 & -5 & 0  \\
+		0 & 0 & -1 & 1 \\
+		-2 & -3 & 3 & 4 \\
+	\end{bmatrix}
+	\begin{bmatrix}
+		v_1 \\ v_2 \\ v_3 \\ V_o
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		4 \\ 80 \\ 12 \\ 0
+	\end{bmatrix}
+\end{gather*}
+
+Solving gives:
+\[
+	v_1 = 4\frac{4}{7}V, v_2 = 7\frac{13}{21}V, v_3 = 2\frac{2}{7}V, V_o = 9\frac{5}{7}V
+\]
 \clearpage
 
