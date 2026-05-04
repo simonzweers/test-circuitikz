@@ -39,14 +39,14 @@
 	\end{circuitikz}
 \end{center}
 
-KVL at $v_1$
+KCL at $v_1$
 \begin{gather*}
 	\frac{v_1 - 8}{3k} + \frac{v_1-V_o}{6k} + 2mA = 0 \\ 
 	2v_1-16 + v_1-V_o = -12 \\ 
-	3v_1 + -V_o = 4
+	3v_1 -V_o = 4
 \end{gather*}
 
-KVL at $v_2$
+KCL at $v_2$
 \begin{gather*}
 	\frac{v_2-10}{5k} - 2m + \frac{v_2 - v_3}{4k} = 0 \\ 
 	4v_2 - 40 - 40 + 5v_2 - 5v_3 = 0 \\
@@ -58,7 +58,7 @@ Constrain equation supernode
 	V_o - 12 = v_3 \leftrightarrow - v_3 + V_o= 12
 \]
 
-KVL at supernode
+KCL at supernode
 \begin{gather*}
 	\frac{v_3 - v_2}{4k} + \frac{V_o - v_1}{6k} + \frac{V_o}{6k} \\ 
 	3v_3 - 3v_2 + 2V_o - 2v_1 + 2V_o = 0 \\
@@ -80,7 +80,16 @@ Solving the matrix:
 	\begin{bmatrix}
 		4 \\ 80 \\ 12 \\ 0
 	\end{bmatrix}
+	\\
+	\begin{amatrix}{4}
+		3 & 0 & 0 & -1 & 4 \\
+		0 & 9 & -5 & 0 & 80 \\
+		0 & 0 & -1 & 1 & 12 \\
+		-2 & -3 & 3 & 4 & 0 \\
+	\end{amatrix}
 \end{gather*}
+
+
 
 Solving gives:
 \[
