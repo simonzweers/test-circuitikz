@@ -1,6 +1,7 @@
-\documentclass[12pt]{article}
+\documentclass[12pt,table]{article}
 
 % ---------- PACKAGES ----------
+\usepackage[dvipsnames]{xcolor}
 \usepackage[a4paper,margin=1in]{geometry}
 \usepackage{tcolorbox}   % For boxes
 \usepackage{amsmath, amssymb}
@@ -49,11 +50,19 @@
   {\thesection.}{0.5em}{}
 
 % ---------- CIRCUITIKZ SETTINGS -----------
-% \tikzset{
-%     /tikz/circuitikz/bipoles/resistor/stroke = red,
-%     /tikz/circuitikz/bipoles/capacitor/color = blue,
-%     /tikz/circuitikz/bipoles/battery1/color = green,
-% }
+\tikzset{
+	R/.append style={color=NavyBlue},
+	C/.append style={color=Purple},
+	V/.append style={color=Red},
+	I/.append style={color=Maroon},
+	bcirc/.style={circ, color=black, fill=black}
+}
+\ctikzset{
+	*-*/.style = {bipole nodes={bcirc}{bcirc}},
+	-*/.style = {bipole nodes={none}{bcirc}},
+	*-/.style = {bipole nodes={bcirc}{none}},
+	% bipoles/thickness=1
+}
 % ---------- DOCUMENT ----------
 \begin{document}
 
